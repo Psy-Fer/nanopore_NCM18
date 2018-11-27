@@ -7,6 +7,9 @@ Not everything will still be valid as ONT update their file structures and data 
 Happy to include your favourite tip, and take requests if you have something really bugging you.
 
 
+# ONT H4X
+
+
 ##### Combine fastq.gz files
 
 Kept simple.
@@ -26,8 +29,6 @@ for file in logs/sequencing_summary*.txt.gz; do zcat $file | tail -n +2; done >>
 
 gzip sequencing_summary.txt
 ```
-
-# ONT H4X
 
 #### dump fastq from fast5
 
@@ -74,6 +75,24 @@ gzip sequencing_summary.txt
     sed -e 'n;n;n;y/!"#$%&'\''()*+,-.\/0123456789:;<=>?@ABCDEFGHIJKL/▁▁▁▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇██████/' example.fastq
 ```
 
+## Tool tips
+
+Tips for using various nanopore software tools
+
+#### Nanopolsish
+
+When using Nanopolish, be sure to use the -s option to use the sequencing summary files. This speeds up the indexing dramatically.
+
+    nanopolish index -d /path/to/raw_fast5s/ -s sequencing_summary.txt albacore_output.fastq
+
+If you are multiplexing samples, filter your reads and files with fast5_fetcher first to get even more speedups. (<https://github.com/Psy-Fer/fast5_fetcher>)
+
+#### Albacore
+
+When basecalling with albacore, one dirty method of getting progress is to compare the number of files in the workspace, with the number of files in the sequencing_summmary file.
+
+    ls -U workspace | wc -l; wc -l sequencing_summary.txt
+
 
 
 ## More to come!!!
@@ -83,7 +102,7 @@ Also, if you have some quick and dirty hacks, let me know, i'll chuck them in.
 
 ## Acknowledgements
 
-I would like to thank my lab (Shaun Carswell, Kirston Barton, Hasindu Gamaarachchi, Kai Martin) in Genomic Technologies team from the [Garvan Institute](https://www.garvan.org.au/) for their feedback on the development of these scripts.
+I would like to thank my lab (Shaun Carswell, Kirston Barton, Hasindu Gamaarachchi, Kai Martin) in Genomic Technologies team from the [Garvan Institute](https://www.garvan.org.au/) for their feedback on the development of these scripts, as well as the nanopore community for their input (attribution added best I could, if I have something wrong, let me know)
 
 ## License
 
