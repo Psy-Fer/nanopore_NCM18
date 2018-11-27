@@ -79,7 +79,13 @@ gzip sequencing_summary.txt
 
 Tips for using various nanopore software tools
 
-#### Nanopolsish
+Here is a link to the most up to date set of nanopore tools I have found yet:
+<https://tinyurl.com/yar8r6wp>
+
+If your tool is missing, please add it with a short description.
+
+
+#### Nanopolish
 
 When using Nanopolish, be sure to use the -s option to use the sequencing summary files. This speeds up the indexing dramatically.
 
