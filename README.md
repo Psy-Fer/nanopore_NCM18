@@ -84,7 +84,7 @@ If your tool is missing, please add it with a short description.
 
 * * *
 
-#### Nanopolish
+### Nanopolish
 
 (<https://github.com/jts/nanopolish>)
 
@@ -96,7 +96,7 @@ If you are multiplexing samples, filter your reads and files with fast5_fetcher 
 
 * * *
 
-#### Albacore
+### Albacore
 
 (<https://community.nanoporetech.com/downloads>)
 
