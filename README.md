@@ -86,6 +86,7 @@ If your tool is missing, please add it with a short description.
 
 
 #### Nanopolish
+(<https://github.com/jts/nanopolish>)
 
 When using Nanopolish, be sure to use the -s option to use the sequencing summary files. This speeds up the indexing dramatically.
 
@@ -94,6 +95,7 @@ When using Nanopolish, be sure to use the -s option to use the sequencing summar
 If you are multiplexing samples, filter your reads and files with fast5_fetcher first to get even more speedups. (<https://github.com/Psy-Fer/fast5_fetcher>)
 
 #### Albacore
+(<https://community.nanoporetech.com/downloads>)
 
 When basecalling with albacore, one dirty method of getting progress is to compare the number of files in the workspace, with the number of files in the sequencing_summmary file.
 
