@@ -6,68 +6,6 @@ Here is a collection of tips, tricks and hacks for use with nanopore data.
 Not everything will still be valid as ONT update their file structures and data types.
 Happy to include your favourite tip, and take requests if you have something really bugging you.
 
-## File structures
-
-The file structure is not overly important, however it will modify some of the commands used in various examples. I have endeavoured to include a few diverse uses, starting from different file states, but of course, I can't think of everything.
-
-#### 1. Raw structure
-
-This is the most basic structure, where all files are present in an accessible state. (**not preferred**)
-
-    ├── huntsman.fastq
-    ├── sequencing_summary.txt       
-    ├── huntsman_reads/              # Read folder
-    │   ├── 0/                       # individual folders containing ~4000 fast5s
-    |   |   ├── huntsman_read1.fast5
-    |   |   └── huntsman_read2.fast5
-    |   |   └── ...
-    |   ├── 1/
-    |   |   ├── huntsman_read#.fast5
-    |   |   └── ...
-    └── ├── ...
-
-#### 2. Local basecalled structure
-
-This structure is the typical structure post local basecalling for long term storage
-fastq and sequencing_summary files have been gzipped and the folders in the reads folder have been tarballed into one large file
-
-    ├── huntsman.fastq.gz            # gzipped
-    ├── sequencing_summary.txt.gz    # gzipped
-    ├── huntsman_reads.tar           # Tarballed read folder
-        |                            # Tarball expanded
-        |-->│   ├── 0/               # individual folders inside tarball
-            |   |   ├── huntsman_read1.fast5
-            |   |   └── huntsman_read2.fast5
-            |   |   └── ...
-            |   ├── 1/
-            |   |   ├── huntsman_read#.fast5
-            |   |   └── ...
-            └── ├── ...
-                                     # or each folder is also tarballed (ideal)
-        |-->│   ├── 0.tar
-            |   ├── 1.tar
-            |   ├── #.tar
-            └── ├── ...
-
-#### 3. Parallel basecalled structure
-
-This structure is post massively parallel basecalling, and looks like multiples of the above structure.
-
-    ├── fastq/
-    |   ├── huntsman.1.fastq.gz
-    |   └── huntsman.2.fastq.gz
-    |   └── huntsman.3.fastq.gz
-    |   └── ...
-    ├── logs/
-    |    ├── sequencing_summary.1.txt.gz
-    |    └── sequencing_summary.2.txt.gz
-    |    └── sequencing_summary.3.txt.gz
-    |    └── ...
-    ├── fast5/
-    |    ├── 1.tar
-    |    └── 2.tar
-    |    └── 3.tar
-    |    └── ...
 
 ##### Combine fastq.gz files
 
@@ -130,7 +68,13 @@ gzip sequencing_summary.txt
     #rm *.grep
 ```
 
-* * *
+#### Dirty cmd lind way to visualise fastq quality scores
+
+```bash
+    sed -e 'n;n;n;y/!"#$%&'\''()*+,-.\/0123456789:;<=>?@ABCDEFGHIJKL/▁▁▁▁▁▁▁▁▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇██████/' example.fastq
+```
+
+
 
 ## More to come!!!
 
