@@ -101,7 +101,62 @@ When basecalling with albacore, one dirty method of getting progress is to compa
 
     ls -U workspace | wc -l; wc -l sequencing_summary.txt
 
+#### Installing albacore into a conda environment using pip wheel
+Requirements
+  * `Python` 2.7, 3.4, 3.5, and/or 3.6 (conda requirement)
+  * `Conda` - check by running `conda list`
+  * `wget`
 
+1. Create a new conda environment with python version 3.4, 3.5 or 3.6. Replace `3.5` with `3.4` or `3.6` in the command below to install those specific versions of python into your conda environment. You can also make the name of your environment whatever you want.
+```bash
+conda create --name albacore-env python=3.5
+```
+2. Download Albacore pip wheel for your specific python3 version from ONT's software downloads page (ONT account required). Right click on a blue "Python 3.X" button to copy the link to your clipboard. https://community.nanoporetech.com/downloads 
+```bash
+wget https://mirror.oxfordnanoportal.com/software/analysis/ont_albacore-2.3.3-cp35-cp35m-manylinux1_x86_64.whl
+```
+3. Activate your conda environment, check that pip 8.1 or higher is installed in the environment
+```bash
+conda activate albacore-env
+(albacore-env) user@host:~$ conda list
+```
+4. Install Albacore using pip wheel that you just downloaded (while conda env is active!), check that all dependencies were installed.
+```bash
+(albacore-env) user@host:~$ pip install ont_albacore-2.3.3-cp35-cp35m-manylinux1_x86_64.whl
+(albacore-env) user@host:~$ conda list
+# output should look similar to this:
+# packages in environment at /home/user/miniconda3/envs/albacore-env:
+#
+# Name                    Version                   Build  Channel
+bzip2                     1.0.6                h470a237_2    conda-forge
+ca-certificates           2018.10.15           ha4d7672_0    conda-forge
+certifi                   2018.8.24             py35_1001    conda-forge
+h5py                      2.8.0                     <pip>
+libffi                    3.2.1                hfc679d8_5    conda-forge
+libgcc-ng                 7.2.0                hdf63c60_3    conda-forge
+libstdcxx-ng              7.2.0                hdf63c60_3    conda-forge
+ncurses                   6.1                  hfc679d8_1    conda-forge
+numpy                     1.15.4                    <pip>
+ont-albacore              2.3.3                     <pip>
+ont-fast5-api             1.0.1                     <pip>
+openssl                   1.0.2p               h470a237_1    conda-forge
+pip                       18.0                  py35_1001    conda-forge
+progressbar33             2.4                       <pip>
+python                    3.5.5                h5001a0f_2    conda-forge
+python-dateutil           2.7.5                     <pip>
+readline                  7.0                  haf1bffa_1    conda-forge
+setuptools                40.4.3                   py35_0    conda-forge
+six                       1.11.0                    <pip>
+sqlite                    3.25.3               hb1c47c0_0    conda-forge
+tk                        8.6.9                ha92aebf_0    conda-forge
+wheel                     0.32.0                py35_1000    conda-forge
+xz                        5.2.4                h470a237_1    conda-forge
+zlib                      1.2.11               h470a237_3    conda-forge
+```
+5. Test Albacore install. Should see help options appear.
+```bash
+(albacore-env) user@host:~$ read_fast5_basecaller.py -h
+```
 
 ## More to come!!!
 
