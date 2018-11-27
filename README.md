@@ -6,9 +6,7 @@ Here is a collection of tips, tricks and hacks for use with nanopore data.
 Not everything will still be valid as ONT update their file structures and data types.
 Happy to include your favourite tip, and take requests if you have something really bugging you.
 
-
 # ONT H4X
-
 
 ##### Combine fastq.gz files
 
@@ -84,8 +82,10 @@ Here is a link to the most up to date set of nanopore tools I have found yet:
 
 If your tool is missing, please add it with a short description.
 
+* * *
 
 #### Nanopolish
+
 (<https://github.com/jts/nanopolish>)
 
 When using Nanopolish, be sure to use the -s option to use the sequencing summary files. This speeds up the indexing dramatically.
@@ -94,33 +94,51 @@ When using Nanopolish, be sure to use the -s option to use the sequencing summar
 
 If you are multiplexing samples, filter your reads and files with fast5_fetcher first to get even more speedups. (<https://github.com/Psy-Fer/fast5_fetcher>)
 
+* * *
+
 #### Albacore
+
 (<https://community.nanoporetech.com/downloads>)
+
+* * *
 
 When basecalling with albacore, one dirty method of getting progress is to compare the number of files in the workspace, with the number of files in the sequencing_summmary file.
 
     ls -U workspace | wc -l; wc -l sequencing_summary.txt
 
-#### Installing albacore into a conda environment using pip wheel
-Requirements
-  * `Python` 2.7, 3.4, 3.5, and/or 3.6 (conda requirement)
-  * `Conda` - check by running `conda list`
-  * `wget`
+* * *
 
-1. Create a new conda environment with python version 3.4, 3.5 or 3.6. Replace `3.5` with `3.4` or `3.6` in the command below to install those specific versions of python into your conda environment. You can also make the name of your environment whatever you want.
+#### Installing albacore into a conda environment using pip wheel
+
+Added by **Curtis Kapsak (kapsakcj)**
+
+Requirements
+
+-   `Python` 2.7, 3.4, 3.5, and/or 3.6 (conda requirement)
+-   `Conda` - check by running `conda list`
+-   `wget`
+
+1.  Create a new conda environment with python version 3.4, 3.5 or 3.6. Replace `3.5` with `3.4` or `3.6` in the command below to install those specific versions of python into your conda environment. You can also make the name of your environment whatever you want.
+
 ```bash
 conda create --name albacore-env python=3.5
 ```
-2. Download Albacore pip wheel for your specific python3 version from ONT's software downloads page (ONT account required). Right click on a blue "Python 3.X" button to copy the link to your clipboard. https://community.nanoporetech.com/downloads 
+
+2.  Download Albacore pip wheel for your specific python3 version from ONT's software downloads page (ONT account required). Right click on a blue "Python 3.X" button to copy the link to your clipboard. <https://community.nanoporetech.com/downloads>
+
 ```bash
 wget https://mirror.oxfordnanoportal.com/software/analysis/ont_albacore-2.3.3-cp35-cp35m-manylinux1_x86_64.whl
 ```
-3. Activate your conda environment, check that pip 8.1 or higher is installed in the environment
+
+3.  Activate your conda environment, check that pip 8.1 or higher is installed in the environment
+
 ```bash
 conda activate albacore-env
 (albacore-env) user@host:~$ conda list
 ```
-4. Install Albacore using pip wheel that you just downloaded (while conda env is active!), check that all dependencies were installed.
+
+4.  Install Albacore using pip wheel that you just downloaded (while conda env is active!), check that all dependencies were installed.
+
 ```bash
 (albacore-env) user@host:~$ pip install ont_albacore-2.3.3-cp35-cp35m-manylinux1_x86_64.whl
 (albacore-env) user@host:~$ conda list
@@ -153,10 +171,14 @@ wheel                     0.32.0                py35_1000    conda-forge
 xz                        5.2.4                h470a237_1    conda-forge
 zlib                      1.2.11               h470a237_3    conda-forge
 ```
-5. Test Albacore install. Should see help options appear.
+
+5.  Test Albacore install. Should see help options appear.
+
 ```bash
 (albacore-env) user@host:~$ read_fast5_basecaller.py -h
 ```
+
+* * *
 
 ## More to come!!!
 
